@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Movie Library";
+}
+
+@model Mission6_tcp44.Models.MovieEntry
+    <!--lowercase "m"; project name.Models folder. Model named "MovieEntry"-->
+<h1>Fill a Movie Entry</h1>
+
+<div>
+    <form method="post">
+        <!--<label asp-for="FirstName">First Name:</label>--> <!--Adding asp-for to the label makes the box have focus when click on the input characters too-->
+        <!--<input asp-for="FirstName" /><br />--> <!--THis is the name in the Model-->
+
+        <!--<label asp-for="LastName">Last Name:</label>
+        <input asp-for="LastName" /><br />
+
+        <label asp-for="Age">Age:</label>
+        <input asp-for="Age" /><br />
+
+        <label asp-for="Phone">Phone:</label>
+        <input asp-for="Phone" /><br />
+
+        <label asp-for="Major">Major:</label>
+        <input asp-for="Major" /><br />
+
+        <label asp-for="CreeperStalker">CreeperStalker:</label>
+        <select asp-for="CreeperStalker">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br />-->
+
+        <label asp-for="Category">Category: </label>
+        <input asp-for="Category" /><br />
+
+        <label asp-for="Title">Movie Title: </label>
+        <input asp-for="Title" /><br />
+
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" /><br />
+
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director"><br />
+
+        <label asp-for="Rating">Rating</label>
+        <select asp-for="Rating">
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select><br />
+
+        <label asp-for="Edited">Edited</label>
+        <select asp-for="Edited">
+            <option>true</option>
+            <option>false</option>
+        </select><br />
+
+        <label asp-for="Lent">Lent to:</label>
+        <input asp-for="Lent" /><br />
+
+        <label asp-for="Notes">Notes</label>
+        <input asp-for="Notes" /><br />
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+</div>

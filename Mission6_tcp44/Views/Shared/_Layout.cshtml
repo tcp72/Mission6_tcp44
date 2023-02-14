@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mission6_tcp44</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav>
+        <h3>Navigation</h3>
+        <ul>
+            <!--asp controller named "Blah";asp-action = "index"; possible bc of the ViewImports page; like typeing mission6_tcp44/home/index-->
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li> <!--Home is the folder in views; Index is the page-->
+            <li><a asp-controller="Home" asp-action="MovieLibrary">MovieLibraryEntry</a></li>
+            <li><a asp-controller="Home" asp-action="MyPodcasts">MyPodcasts</a></li>
+        </ul>
+
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+</body>
+</html>
