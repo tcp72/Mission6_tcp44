@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Tite"] = "Delete Application";
+}
+
+@model MovieEntry
+<!--Just one record-->
+
+<h2>Confirm Deletion</h2>
+<h3>Are you sure you want to delete the record for @Model.Title?</h3>
+
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <button type="submit">Delete</button>
+
+    <a asp-controller="Home" asp-action="Waitlist" class="btn btn-primary">Cancel</a> <!--Seems like a cancel because redirecting it to the waitlist-->
+
+    <input type="hidden" asp-for="MovieId" /> <!--make hidden attribute to associate with the record so it knows where to remove-->
+</form>

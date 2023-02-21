@@ -15,15 +15,70 @@ namespace Mission6_tcp44.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("Mission6_tcp44.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Horror/Suspense"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Miscellaneous"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Television"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "VHS"
+                        });
+                });
+
             modelBuilder.Entity("Mission6_tcp44.Models.MovieEntry", b =>
                 {
                     b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +107,15 @@ namespace Mission6_tcp44.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("responses");
 
                     b.HasData(
                         new
                         {
                             MovieId = 1,
-                            Category = "Comedy",
+                            CategoryID = 1,
                             Director = "John",
                             Edited = true,
                             Lent = "my sister",
@@ -70,7 +127,7 @@ namespace Mission6_tcp44.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Comedy",
+                            CategoryID = 2,
                             Director = "Matt",
                             Edited = false,
                             Lent = "dad",
@@ -82,7 +139,7 @@ namespace Mission6_tcp44.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Adventure",
+                            CategoryID = 3,
                             Director = "Smithson",
                             Edited = false,
                             Lent = "mom",
@@ -91,6 +148,15 @@ namespace Mission6_tcp44.Migrations
                             Title = "Top Gun",
                             Year = 2022
                         });
+                });
+
+            modelBuilder.Entity("Mission6_tcp44.Models.MovieEntry", b =>
+                {
+                    b.HasOne("Mission6_tcp44.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

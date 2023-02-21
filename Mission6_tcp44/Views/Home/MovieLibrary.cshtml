@@ -28,9 +28,17 @@
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select><br />-->
+        <div asp-validation-summary="All"></div>
 
-        <label asp-for="Category">Category: </label>
-        <input asp-for="Category" /><br />
+        <label asp-for="CategoryID">Category: </label>
+        <select asp-for="CategoryID">
+            <option value-="">Choose a Category</option>
+            @foreach (Category c in ViewBag.Categories) //instance of Category object
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select>
+        <br />
 
         <label asp-for="Title">Movie Title: </label>
         <input asp-for="Title" /><br />

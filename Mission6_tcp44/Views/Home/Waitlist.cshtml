@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Wait List";
+}
+
+@model List<MovieEntry> 
+<!--Above is saying to pass in a list from the 'MovieEntry' model; we reference this in the "tbody" loop below -->
+<!--Note we are pulling in a list from that model and it is interpreted as the "movies" object created in the HomeController-->
+
+<table class="table table-bordered table-striped"> <!--these classes are built into the bootstrap-->
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Lent</td>
+            <td>Notes</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!--pull in from "movies" object in the "Waitlist" action/method from the Homecontroller (see top where import)-->
+        @foreach (var x in Model) //for each entry x in Model (capital "M") is the info that came imported above
+        {<!--Soo, take each horizontal entry and populate it with these fields, dynamic number-->
+            <tr>
+                <td>@x.Category.CategoryName</td> <!--make an entry for each thing contained in the model-->
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.Lent</td>
+                <td>@x.Notes</td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieId">Edit</a></td> <!--THey click on this button and send them to the action-->
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieId">Delete</a></td>
+            </tr>
+
+        }
+    </tbody>
+</table>
